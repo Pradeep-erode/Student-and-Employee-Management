@@ -1,0 +1,27 @@
+﻿@model Studentmanagement.Core.Models.StudentMarkmodel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Student Information adding
+    </title>
+</head>
+<body>
+    <h1>Student Marks</h1>
+    <div id="studentadd">
+        @using (Html.BeginForm("Marksupdate", "Home"))
+        {@Html.DisplayName("Name");<br>
+        @Html.DropDownList("Name", new SelectList(Model.Namelist, "studentID", "Studentname"))<br>
+        @Html.DisplayName("Mark1");<br>
+        @Html.TextBoxFor(m => m.mark1);<br>
+        @Html.DisplayName("Mark2");<br>
+        @Html.TextBoxFor(m => m.mark2);<br>
+        <button type="submit">SAVE</button>
+    }
+        @Html.ActionLink("Marklist_page","markpost","Home")
+    </div>
+</body>
+
+</html>
+<style>
+</style>

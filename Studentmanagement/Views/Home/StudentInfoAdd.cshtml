@@ -1,0 +1,87 @@
+﻿@model Studentmanagement.Core.Models.Studentinfomodel
+<!DOCTYPE html>
+<html>
+<head>
+    @section Scripts
+{
+        <partial name="_ValidationScriptsPartial" />
+}
+
+    <title>
+        Student Information adding
+    </title>
+</head>
+<body>
+    <h1>Student Marks</h1>
+    <div id="studentadd">
+        @using (Html.BeginForm("Show", "Home",new { id="formvali"}))
+        {@Html.DisplayName("Name");<br>
+        @Html.TextBoxFor(x => x.name);<br>
+        @Html.DisplayName("Mail");<br>
+        @Html.TextBoxFor(m => m.mail);<br>
+        @Html.DisplayName("Department");<br>
+        @Html.DropDownList("StudentDepartment", new SelectList(Model.Department, "DepartmentId", "DepartmentName"), "Select Department")<br>
+        @Html.DisplayName("Gender");<br>
+        @Html.DisplayName("Male");
+        @Html.RadioButtonFor(m => m.Gender, "Male");
+        @Html.DisplayName("Female");
+        @Html.RadioButtonFor(m => m.Gender, "Female");<br>
+        <button type="submit" onclick="SubmitDetails()">SAVE</button>
+
+    }
+
+    </div>
+    </body>
+
+</html>
+<script>
+    $(function () {
+        $("#formvali").validate({
+            rules: {
+                name:
+                {
+                    required: true
+                },
+                mail:
+                {
+                    required: true
+                },
+                StudentDepartment:
+                {
+                    required: true
+                },
+                Gender:
+                {
+                    required: true
+                }
+            },
+            messages:
+          {
+            name:
+            {
+               name: "Name is required"
+            },
+            mail:
+            {
+                mail: "Mail is required"
+               
+            },
+            StudentDepartment:
+            {
+                StudentDepartment: "StudentDepartment is required"
+            },
+            Gender:
+            {
+                Gender: "please select gender"
+            }
+          }
+      });
+
+    });
+    function SubmitDetails() {
+
+        if ($("#formvali").validate()) {
+            $("#formvali").submit();
+        }
+    }
+    </script>

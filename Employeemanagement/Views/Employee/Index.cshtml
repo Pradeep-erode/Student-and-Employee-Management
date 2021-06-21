@@ -1,0 +1,24 @@
+﻿@model Studentmanagement.Core.Models.Employeelogin
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index page</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="login">
+        <div id="mainindex">
+            @using (@Html.BeginForm("Admincheck", "Employee"))
+            {
+                <div>
+                @Html.TextBoxFor(m => m.username, new { placeholder = "Username", @class = "form-control" })</div><div>
+                @Html.TextBoxFor(m => m.password, new { placeholder = "Password", @class = "form-control" });</div><div>
+                <button type="submit">Submit</button>
+                    </div>
+            }
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studentmanagement", "Studentmanagement.csproj", "{DAE9EBFE-AB8C-44AF-AA56-7E2094E9B0D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studentmanagement.Core", "..\Studentmanagement.Core\Studentmanagement.Core.csproj", "{AE438CAA-E7AF-4BCC-B50A-E945C19D684E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studentmanagement.Services", "..\Studentmanagement.Services\Studentmanagement.Services.csproj", "{5F7082AE-6C86-43F8-8052-657E103000FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studentmanagement.Repository", "..\Studentmanagement.Repository\Studentmanagement.Repository.csproj", "{928599F4-1173-4BF7-99BB-D9D212000190}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studentmanagement-Utility", "..\Studentmanagement-Utility\Studentmanagement-Utility.csproj", "{2F9B0295-E893-4C90-A32D-61E04BEDFC8E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studentmanagement.Entities", "..\Studentmanagement.Entities\Studentmanagement.Entities.csproj", "{257F09FD-E604-4862-B5A5-EE7DB44C5078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employeemanagement", "..\Employeemanagement\Employeemanagement.csproj", "{3023638C-00F0-4593-BF26-9E96AB18E016}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAE9EBFE-AB8C-44AF-AA56-7E2094E9B0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE9EBFE-AB8C-44AF-AA56-7E2094E9B0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE9EBFE-AB8C-44AF-AA56-7E2094E9B0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE9EBFE-AB8C-44AF-AA56-7E2094E9B0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE438CAA-E7AF-4BCC-B50A-E945C19D684E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE438CAA-E7AF-4BCC-B50A-E945C19D684E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE438CAA-E7AF-4BCC-B50A-E945C19D684E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE438CAA-E7AF-4BCC-B50A-E945C19D684E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F7082AE-6C86-43F8-8052-657E103000FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F7082AE-6C86-43F8-8052-657E103000FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F7082AE-6C86-43F8-8052-657E103000FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F7082AE-6C86-43F8-8052-657E103000FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{928599F4-1173-4BF7-99BB-D9D212000190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928599F4-1173-4BF7-99BB-D9D212000190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928599F4-1173-4BF7-99BB-D9D212000190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928599F4-1173-4BF7-99BB-D9D212000190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F9B0295-E893-4C90-A32D-61E04BEDFC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9B0295-E893-4C90-A32D-61E04BEDFC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F9B0295-E893-4C90-A32D-61E04BEDFC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F9B0295-E893-4C90-A32D-61E04BEDFC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{257F09FD-E604-4862-B5A5-EE7DB44C5078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{257F09FD-E604-4862-B5A5-EE7DB44C5078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{257F09FD-E604-4862-B5A5-EE7DB44C5078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{257F09FD-E604-4862-B5A5-EE7DB44C5078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3023638C-00F0-4593-BF26-9E96AB18E016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3023638C-00F0-4593-BF26-9E96AB18E016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3023638C-00F0-4593-BF26-9E96AB18E016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3023638C-00F0-4593-BF26-9E96AB18E016}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69FEFC85-C9EF-452F-8C0B-2DB87B283923}
+	EndGlobalSection
+EndGlobal

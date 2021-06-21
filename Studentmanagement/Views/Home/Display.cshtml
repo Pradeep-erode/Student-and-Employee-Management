@@ -1,0 +1,39 @@
+﻿
+@model IEnumerable<Studentmanagement.Core.Models.Studentinfomodel>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Display page
+    </title>
+</head>
+<body>
+    <div>
+        
+        <table>
+            <tr>
+                <td>StudentID</td>
+                <td>Name</td>
+                <td>Emai</td>
+                <td>Department</td>
+                <td>Gender</td>
+                <td>Action</td>
+            </tr>
+            @foreach (var ist in Model)
+            {
+        <tr>
+            <td>@Html.DisplayFor(modelist => ist.studentId)</td>
+            <td>@Html.DisplayFor(modelist => ist.name)</td>
+            <td>@Html.DisplayFor(modelist => ist.mail)</td>
+            <td>@Html.DisplayFor(modelist => ist.StudentDepartment)</td>
+            <td>@Html.DisplayFor(modelist => ist.Gender)</td>
+            <td>@Html.ActionLink("Delete", "Home", new { @id = ist.studentId }, new { onclick = "return confirm('Are you want to Delete');" })</td>
+          <td>  @Html.ActionLink("Addmarks", "AddMarks", "Home")</td>
+        </tr>
+            }
+
+
+        </table>
+    </div>
+</body>
+</html>

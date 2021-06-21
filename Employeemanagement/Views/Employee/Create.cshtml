@@ -1,0 +1,51 @@
+﻿@model Studentmanagement.Core.Models.Employeemanagemet
+   
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+<h1>Create</h1>
+
+<h4>Employeemanagemet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { @id = "formvalidate" }))
+        {
+            @Html.HiddenFor(m => m.studentID);
+            <label>Fullname</label><span>*</span>
+            @Html.TextBoxFor(m => m.fullname);
+            <label>Username</label><span>*</span>
+            @Html.TextBoxFor(m => m.username);
+            <label>Email</label><span>*</span>
+            @Html.TextBoxFor(m => m.Email);
+            <label>Department</label><span>*</span>
+            @Html.DropDownList("department", new SelectList(Model.departmentlist, "departmentID", "departmentname"), "Select department")<br>
+            <label>Work</label><span>*</span>
+            @Html.TextBoxFor(m => m.work);<br>
+            <label>Address</label><span>*</span>
+            @Html.TextBoxFor(m => m.address);
+            <label>Phone</label><span>*</span>
+            @Html.TextBoxFor(m => m.phonenumber);<br>
+            <label>Gender</label><span>*</span>
+            <label>Male</label>
+            @Html.RadioButtonFor(m => m.gender, "Male");
+            <label>Female</label>
+            @Html.RadioButtonFor(m => m.gender, "Female");<br>
+            @if (Model.studentID > 0)
+            {
+                <button type="submit" onclick="SubmitDetails()">Update</button>
+            }
+            else
+            {
+                <button type="submit" onclick="SubmitDetails()">Create</button>
+            }
+            <button type="reset">Reset</button>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back-To-List", "Dashboard", "Employee")
+</div>
+<script src="~/js/site.js"></script>
