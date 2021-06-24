@@ -26,11 +26,16 @@ namespace Studentmanagement.Controllers
             dataa.Department=_student.GetAllDepartment();
             return View(dataa);
         }
-
+        [HttpPost]
         public ActionResult Show(Studentinfomodel create)
         {
-            _student.Addstudentinfo(create);
-            return RedirectToAction("Display");
+            //checking server side validation
+            if (ModelState.IsValid)
+            {
+                _student.Addstudentinfo(create);
+                return RedirectToAction("Display");
+            }
+            return RedirectToAction("StudentInfoAdd");
         }
         public ActionResult Display()
         {
@@ -48,20 +53,31 @@ namespace Studentmanagement.Controllers
             listta.Namelist = _student.Namelist();
             return View(listta);
         }
+        [HttpPost]
         public ActionResult Marksupdate(StudentMarkmodel markbase)
         {
-            _student.marklistadd(markbase);
+            if (ModelState.IsValid)
+            {
+                _student.marklistadd(markbase);
+                return RedirectToAction("markpost");
+            }
             return RedirectToAction("markpost");
+
         }
         public ActionResult markpost()
         {
            var listofmarklist =_student.Marklist();
            return View(listofmarklist);
         }
-        public ActionResult Deletemark(int id)
+        public ActionResult Deletemark(int studentid)
         {
-            _student.Deletemark(id);
+            _student.Deletemark(studentid);
             return RedirectToAction("markpost");
+        }
+        public ActionResult Delete(int studentid)
+        {
+            _student.DeleteInfo(studentid);
+            return RedirectToAction("Display");
         }
 
         public IActionResult Privacy()

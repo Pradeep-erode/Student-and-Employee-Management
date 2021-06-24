@@ -67,16 +67,30 @@ namespace Studentmanagement.Repository.Repositories
         }
         public void marklistadd(StudentMarkmodel markbase)
         {
-            using (Studentfirstcontext entit=new Studentfirstcontext())
+
+            using (Studentfirstcontext entit = new Studentfirstcontext())
             {
-                Studentmark basemark = new Studentmark();
-                
-                basemark.Name = markbase.Name;
-                basemark.Mark1 = markbase.mark1;
-                basemark.Mark2 = markbase.mark2;
-                entit.Add(basemark);
-                entit.SaveChanges(); 
+                var check = entit.Studentmark.Where(m => m.Name == markbase.Name && m.IsDeleted==false).SingleOrDefault();
+                if (check != null )
+                {
+                    check.Name = markbase.Name;
+                    check.Mark1 = markbase.mark1;
+                    check.Mark2 = markbase.mark2;
+                    entit.SaveChanges();
+                }
+
+                else
+                {
+                    Studentmark basemark = new Studentmark();
+                    basemark.Name = markbase.Name;
+                    basemark.Mark1 = markbase.mark1;
+                    basemark.Mark2 = markbase.mark2;
+                    entit.Add(basemark);
+                    entit.SaveChanges();
+                }
             }
+                
+            
         }
         public IEnumerable<StudentMarkmodel> Marklist()
         {
@@ -85,7 +99,7 @@ namespace Studentmanagement.Repository.Repositories
                 List<StudentMarkmodel> list = new List<StudentMarkmodel>();
                 //var listofmark = entit.Studentmark.Where(m => m.IsDeleted == false).ToList();
                 var joinresult = from c in entit.Studentmark
-                                 join d in entit.Studentinfo on c.StudentId equals d.StudentId where c.IsDeleted==false
+                                 join d in entit.Studentinfo on c.Name equals d.StudentId where c.IsDeleted==false
                                  && d.IsDeleted==false
                                  select new
                                  {
@@ -163,5 +177,16 @@ namespace Studentmanagement.Repository.Repositories
                 entites.SaveChanges();
             }
         }
+        public void DeleteInfo(int id)
+        {
+            using (var entites = new Studentfirstcontext())
+            {
+                var list = entites.Studentinfo.Where(m => m.StudentId == id).SingleOrDefault();
+                list.IsDeleted = true;
+                list.UpdatedTimeStamp = DateTime.Now;
+                entites.SaveChanges();
+            }
+        }
+
     }
 }

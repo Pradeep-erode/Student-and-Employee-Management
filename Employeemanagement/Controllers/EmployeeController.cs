@@ -1,16 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Studentmanagement.Core.Iservices;
 using Studentmanagement.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace Employeemanagement.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly EmployeeIService _employ;
+
+        public string SessionKeyName { get; private set; }
+
         public EmployeeController(EmployeeIService employe)
         {
             _employ = employe;
@@ -24,6 +29,7 @@ namespace Employeemanagement.Controllers
             var ckecking=_employ.Admincheck(employeelogin);
             if (ckecking == 1)
             {
+                HttpContext.Session.SetString("username", employeelogin.username);
                 return RedirectToAction("Dashboard");
             }
             else
@@ -37,10 +43,18 @@ namespace Employeemanagement.Controllers
             var employeelist = _employ.Dashboard();
             return View(employeelist);
         }
-        public ActionResult Create(Employeemanagemet employeeedit, int id)
+        public ActionResult Create(int id)
         {
+            Employeemanagemet employeeedit = new Employeemanagemet();
+            if (id > 0)
+            {
+                var employeeedi = _employ.Edit(id);
+                employeeedi.departmentlist = _employ.Getdepartmet();
+                return View(employeeedi);
+            }
             employeeedit.departmentlist = _employ.Getdepartmet();
-            return View(employeeedit); 
+            return View(employeeedit);
+
         }
         [HttpPost]
         public ActionResult Create(Employeemanagemet employeedetail)
@@ -48,11 +62,7 @@ namespace Employeemanagement.Controllers
             _employ.Create(employeedetail);
             return RedirectToAction("Dashboard");
         }
-        public ActionResult Edit(int id)
-        {
-            var employeeedit = _employ.Edit(id);
-            return RedirectToAction("Create", employeeedit);
-        }
+        
         public ActionResult Delete(int studentid)
         {
             _employ.Delete(studentid);
@@ -60,8 +70,15 @@ namespace Employeemanagement.Controllers
         }
         public ActionResult Details(int studentid)
         {
-            var view=_employ.Details(studentid);
-            return View(view);
+            if (HttpContext.Session.GetString("username") != null)
+            {
+                var view = _employ.Details(studentid);
+                return View(view);
+            }
+            else 
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }

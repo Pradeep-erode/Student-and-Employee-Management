@@ -40,43 +40,43 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fullname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.departmentstring)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.work)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.phonenumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.gender)
-                </td>
-                @Html.HiddenFor(modelItem => item.studentID)
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "Employee", new { id = item.studentID }, new { @class = "btn-primary buttons" })
-                    @*<button type="button"onclick="/Employee/Edit" class="btn-primary">Edit</button>*@
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", "Employee", new { studentid = item.studentID }, new { @class = "btn-info buttons" })
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", "Employee", new { studentid = item.studentID }, new { @class = "btn-warning buttons" })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departmentstring)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.work)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phonenumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            @Html.HiddenFor(modelItem => item.studentID)
+            <td>
+                @Html.ActionLink("Edit", "Create", "Employee", new { id = item.studentID }, new { @class = "btn-primary buttons" })
+                @*<button type="button"onclick="/Employee/Edit" class="btn-primary">Edit</button>*@
+            </td>
+            <td>
+            @Html.ActionLink("Details", "Details", "Employee", new { studentid = item.studentID }, new { @class = "btn-info buttons"})
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", "Employee", new { studentid = item.studentID }, new { @class = "btn-warning buttons",onclick="return confirm('Are you want to delete')" })
+            </td>
+        </tr>
         }
     </tbody>
 

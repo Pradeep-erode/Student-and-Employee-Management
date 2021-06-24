@@ -48,5 +48,9 @@ namespace Studentmanagement.Services.Services
         {
             _repositorya.Deletemark(id);
         }
+        public void DeleteInfo(int id)
+        {
+            _repositorya.DeleteInfo(id);
+        }
     }
 }

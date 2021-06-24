@@ -7,8 +7,8 @@
     </title>
 </head>
 <body>
+    <div> @Html.ActionLink("Back-To-AddMarks", "AddMarks", "Home", new { }, new { @class = "btn-info p-1" })</div>
     <div>
-
         <table>
             <tr>
                 @*<td>StudentID</td>*@
@@ -26,12 +26,15 @@
                     <td>@Html.DisplayFor(modelist => ist.mark1)</td>
                     <td>@Html.DisplayFor(modelist => ist.mark2)</td>
                     <td>@Html.DisplayFor(modelist => ist.total)</td>
-                    <td>@Html.DisplayFor(modelist=>ist.studentId)</td>
-                    <td>@Html.ActionLink("Delete","Deletemark", "Home", new { id = ist.studentId }, new { onclick = "return confirm('Are you want to Delete');" })</td>
-                    @*<td>  @Html.ActionLink("Addmarks", "AddMarks", "Home")</td>*@
+                    <td>@Html.HiddenFor(modelist => ist.studentId)</td>
+                    <td>@Html.ActionLink("Delete", "Deletemark", "Home", new { studentid = ist.studentId }, new { @class = "btn-danger", onclick = "return confirm('Are you want to Delete');" })</td>
+
                 </tr>
+
             }
+
         </table>
+
     </div>
 </body>
 </html>

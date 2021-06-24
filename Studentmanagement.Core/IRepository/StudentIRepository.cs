@@ -23,6 +23,7 @@ namespace Studentmanagement.Core.IRepository
         public List<Namelist> Namelist();
 
         public void Deletemark(int id);
+        public void DeleteInfo(int id);
 
     }
 }

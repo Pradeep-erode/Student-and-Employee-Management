@@ -1,4 +1,8 @@
 ﻿@model Studentmanagement.Core.Models.StudentMarkmodel
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +12,19 @@
 </head>
 <body>
     <h1>Student Marks</h1>
+    <div>@Html.ActionLink("Marklist-Page", "markpost", "Home", new { }, new { @class = "btn-info p-1" })</div>
+    <div class="mt-2">@Html.ActionLink("Back-to-Dashboard", "Display", "Home", new { }, new { @class = "btn-info p-1" })</div>
     <div id="studentadd">
-        @using (Html.BeginForm("Marksupdate", "Home"))
+        @using (Html.BeginForm("Marksupdate", "Home", FormMethod.Post))
         {@Html.DisplayName("Name");<br>
         @Html.DropDownList("Name", new SelectList(Model.Namelist, "studentID", "Studentname"))<br>
         @Html.DisplayName("Mark1");<br>
         @Html.TextBoxFor(m => m.mark1);<br>
         @Html.DisplayName("Mark2");<br>
         @Html.TextBoxFor(m => m.mark2);<br>
-        <button type="submit">SAVE</button>
+        <button type="submit" onclick="SubmitDetails()" class="btn-success">SAVE</button>
     }
-        @Html.ActionLink("Marklist_page","markpost","Home")
+
     </div>
 </body>
 

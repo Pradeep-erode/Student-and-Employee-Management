@@ -3,9 +3,10 @@
 <html>
 <head>
     @section Scripts
-{
+    {
         <partial name="_ValidationScriptsPartial" />
-}
+        <script src="~/js/site.js"></script>
+    }
 
     <title>
         Student Information adding
@@ -13,75 +14,40 @@
 </head>
 <body>
     <h1>Student Marks</h1>
-    <div id="studentadd">
-        @using (Html.BeginForm("Show", "Home",new { id="formvali"}))
-        {@Html.DisplayName("Name");<br>
-        @Html.TextBoxFor(x => x.name);<br>
-        @Html.DisplayName("Mail");<br>
-        @Html.TextBoxFor(m => m.mail);<br>
-        @Html.DisplayName("Department");<br>
-        @Html.DropDownList("StudentDepartment", new SelectList(Model.Department, "DepartmentId", "DepartmentName"), "Select Department")<br>
-        @Html.DisplayName("Gender");<br>
-        @Html.DisplayName("Male");
-        @Html.RadioButtonFor(m => m.Gender, "Male");
-        @Html.DisplayName("Female");
-        @Html.RadioButtonFor(m => m.Gender, "Female");<br>
-        <button type="submit" onclick="SubmitDetails()">SAVE</button>
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @using (Html.BeginForm("Show", "Home",FormMethod.Post,new { @id = "formvalia" }))
+        {
+            <div class="form-control">
+                @Html.DisplayName("Name")
+                @Html.TextBoxFor(x => x.name)
+                @Html.ValidationMessageFor(x=>x.name)
+            </div>
+            <div class="form-control">
+                 @Html.DisplayName("Mail")
+                 @Html.TextBoxFor(m => m.mail)
+                @Html.ValidationMessageFor(m=>m.mail)
+            </div>
+            <div class="form-control">
+                @Html.DisplayName("Department")
+                @Html.ValidationMessageFor(x => x.StudentDepartment)
+                @Html.DropDownList("StudentDepartment", new SelectList(Model.Department, "DepartmentId", "DepartmentName"), "")
 
-    }
-
+            </div>
+            <div class="form-control">
+                @Html.DisplayName("Gender")
+                @Html.DisplayName("Male")
+                @Html.RadioButtonFor(m => m.Gender, "Male")
+                @Html.DisplayName("Female")
+                @Html.RadioButtonFor(m => m.Gender, "Female")
+                @Html.ValidationMessageFor(x => x.Gender)
+            </div>
+        <div> <button type="submit" onclick="SubmitDetails()" class="btn-success">SAVE</button></div>
+}
     </div>
-    </body>
+    <div>
+  @Html.ActionLink("Dashboard", "Display", "Home", new { }, new { @class = "btn-info p-2" })</div>
+   
+</body>
 
 </html>
-<script>
-    $(function () {
-        $("#formvali").validate({
-            rules: {
-                name:
-                {
-                    required: true
-                },
-                mail:
-                {
-                    required: true
-                },
-                StudentDepartment:
-                {
-                    required: true
-                },
-                Gender:
-                {
-                    required: true
-                }
-            },
-            messages:
-          {
-            name:
-            {
-               name: "Name is required"
-            },
-            mail:
-            {
-                mail: "Mail is required"
-               
-            },
-            StudentDepartment:
-            {
-                StudentDepartment: "StudentDepartment is required"
-            },
-            Gender:
-            {
-                Gender: "please select gender"
-            }
-          }
-      });
-
-    });
-    function SubmitDetails() {
-
-        if ($("#formvali").validate()) {
-            $("#formvali").submit();
-        }
-    }
-    </script>

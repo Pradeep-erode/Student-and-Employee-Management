@@ -8,16 +8,17 @@ function SubmitDetails() {
         $("#formvalidate").submit();
     }
 }
-    $(function () {
+$(function () {
         $("#formvalidate").validate({
             rules: {
                 fullname:
                 {
-                    required: true
+                    required: true,
                 },
                 username:
                 {
                     required: true
+
                 },
                 Email:
                 {
@@ -30,7 +31,7 @@ function SubmitDetails() {
                 work:
                 {
                     required: true
-                    
+
                 },
                 address:
                 {
@@ -39,8 +40,9 @@ function SubmitDetails() {
                 phonenumber:
                 {
                     required: true,
-                    regex:[0-9]
-                   
+                    minlength: 10,
+                    maxlength: 10
+                    
                 },
                 gender:
                 {
@@ -75,7 +77,9 @@ function SubmitDetails() {
                 },
                 phonenumber:
                 {
-                    required: "Phonenumber is required",
+                    required: "Phone number is required",
+                    minlength: "Minimum 10 digit is required",
+                    maxlength:"Maximum 10 digit only"
                 },
                 gender:
                 {
@@ -84,4 +88,4 @@ function SubmitDetails() {
             }
         });
     });
-    
+   

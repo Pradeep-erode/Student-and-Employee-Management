@@ -52,7 +52,7 @@ namespace Studentmanagement
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=AddMarks}/{id?}");
+                    pattern: "{controller=Home}/{action=StudentInfoAdd}/{id?}");
             });
         }
     }

@@ -1,37 +1,68 @@
 ﻿@model Studentmanagement.Core.Models.Employeemanagemet
-   
-@section Scripts
-{
-    <partial name="_ValidationScriptsPartial" />
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> create page</title>
+    @section Scripts
+   {
+        <partial name="_ValidationScriptsPartial" />
+        <script src="~/js/site.js"></script>
+    }
+</head>
+<body>
 <h1>Create</h1>
 
 <h4>Employeemanagemet</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
+        @Html.ValidationSummary(true)
         @using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { @id = "formvalidate" }))
         {
             @Html.HiddenFor(m => m.studentID);
-            <label>Fullname</label><span>*</span>
-            @Html.TextBoxFor(m => m.fullname);
-            <label>Username</label><span>*</span>
-            @Html.TextBoxFor(m => m.username);
-            <label>Email</label><span>*</span>
-            @Html.TextBoxFor(m => m.Email);
-            <label>Department</label><span>*</span>
-            @Html.DropDownList("department", new SelectList(Model.departmentlist, "departmentID", "departmentname"), "Select department")<br>
-            <label>Work</label><span>*</span>
-            @Html.TextBoxFor(m => m.work);<br>
-            <label>Address</label><span>*</span>
-            @Html.TextBoxFor(m => m.address);
-            <label>Phone</label><span>*</span>
-            @Html.TextBoxFor(m => m.phonenumber);<br>
-            <label>Gender</label><span>*</span>
-            <label>Male</label>
-            @Html.RadioButtonFor(m => m.gender, "Male");
-            <label>Female</label>
-            @Html.RadioButtonFor(m => m.gender, "Female");<br>
+            <div>
+                <label>Fullname</label><span>*</span>
+                @Html.TextBoxFor(m => m.fullname)
+                @Html.ValidationMessageFor(m=>m.fullname)
+            </div>
+            <div>
+                <label>Username</label><span>*</span>
+                @Html.TextBoxFor(m => m.username)
+                @Html.ValidationMessageFor(m => m.username,"",new  { @class="text-info"})
+            </div>
+            <div>
+                <label>Email</label><span>*</span>
+                @Html.ValidationMessageFor(model => model.Email,"Email is must",new { @class=""})
+                @Html.TextBoxFor(m => m.Email)
+            </div>
+            <div>
+                <label>Department</label><span>*</span>
+                @Html.DropDownList("department", new SelectList(Model.departmentlist, "departmentID", "departmentname"), "Select department")
+                @Html.ValidationMessageFor(m => m.department)
+            </div>
+            <div>
+                <label>Work</label><span>*</span>
+                @Html.TextBoxFor(m => m.work)
+                @Html.ValidationMessageFor(m => m.work)<br>
+            </div>
+            <div>
+                <label>Address</label><span>*</span>
+                @Html.TextBoxFor(m => m.address)
+                @Html.ValidationMessageFor(m => m.address)
+            </div>
+            <div>
+                <label>Phone</label><span>*</span>
+                @Html.TextBoxFor(m => m.phonenumber)
+                @Html.ValidationMessageFor(m=>m.phonenumber)
+            </div>
+            <div>
+                <label>Gender</label><span>*</span>
+                <label>Male</label>
+                @Html.RadioButtonFor(m => m.gender, "Male")
+                <label>Female</label>
+                @Html.RadioButtonFor(m => m.gender, "Female")
+                @Html.ValidationMessageFor(m => m.gender)
+            </div>
             @if (Model.studentID > 0)
             {
                 <button type="submit" onclick="SubmitDetails()">Update</button>
@@ -48,4 +79,5 @@
 <div>
     @Html.ActionLink("Back-To-List", "Dashboard", "Employee")
 </div>
-<script src="~/js/site.js"></script>
+    </body>
+</html>

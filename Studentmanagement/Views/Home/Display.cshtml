@@ -1,5 +1,6 @@
 ﻿
 @model IEnumerable<Studentmanagement.Core.Models.Studentinfomodel>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +10,12 @@
 </head>
 <body>
     <div>
-        
-        <table>
+        <div class="btn-group-vertical">
+            @Html.ActionLink("Addmarks", "AddMarks", "Home", new { }, new { @class = "btn-primary p-1" })
+        </div>
+        <div><table>
             <tr>
-                <td>StudentID</td>
+                @*<td>StudentID</td>*@
                 <td>Name</td>
                 <td>Emai</td>
                 <td>Department</td>
@@ -21,19 +24,20 @@
             </tr>
             @foreach (var ist in Model)
             {
-        <tr>
-            <td>@Html.DisplayFor(modelist => ist.studentId)</td>
-            <td>@Html.DisplayFor(modelist => ist.name)</td>
-            <td>@Html.DisplayFor(modelist => ist.mail)</td>
-            <td>@Html.DisplayFor(modelist => ist.StudentDepartment)</td>
-            <td>@Html.DisplayFor(modelist => ist.Gender)</td>
-            <td>@Html.ActionLink("Delete", "Home", new { @id = ist.studentId }, new { onclick = "return confirm('Are you want to Delete');" })</td>
-          <td>  @Html.ActionLink("Addmarks", "AddMarks", "Home")</td>
-        </tr>
+                <tr>
+
+                    <td>@Html.DisplayFor(modelist => ist.name)</td>
+                    <td>@Html.DisplayFor(modelist => ist.mail)</td>
+                    <td>@Html.DisplayFor(modelist => ist.StudentDepartment)</td>
+                    <td>@Html.DisplayFor(modelist => ist.Gender)</td>
+                    @Html.HiddenFor(modelist => ist.studentId)
+                    <td>@Html.ActionLink("Delete", "Delete", "Home", new { studentid = ist.studentId }, new { @class = "btn-danger w-70", onclick = "return confirm('Are you want to Delete');" })</td>
+
+                </tr>
             }
-
-
         </table>
+        </div>
+
     </div>
 </body>
 </html>

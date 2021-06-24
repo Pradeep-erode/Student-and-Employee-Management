@@ -96,6 +96,31 @@ margin:0.8rem;
     padding: 12px;
     border-radius: 5px;
 }
+
+
+/*For both server script error and client side messages*/
+
 span {
+    color: #b94a48;
+}
+
+/*Below elements are presented within the span so,by changing span color below elements color also changed
+    where .error is unique but .field-validation-error is not a unique one
+*/
+/*For script error messages*/
+.error {
 color:red;
 }
+
+
+/*For server aside error messages*/
+/*visit for more format https://zoomicon.wordpress.com/2018/11/02/howto-change-color-of-validation-messages-in-asp-net-mvc/
+*/
+
+.field-validation-error {
+    color: #b94a48;
+}
+
+
+
+

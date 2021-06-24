@@ -20,5 +20,6 @@ namespace Studentmanagement.Core.Iservices
         public List<Namelist> Namelist();
 
         public void Deletemark(int id);
+        public void DeleteInfo(int id);
     }
 }
